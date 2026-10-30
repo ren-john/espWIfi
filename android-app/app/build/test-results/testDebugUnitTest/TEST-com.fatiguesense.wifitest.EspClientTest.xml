@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fatiguesense.wifitest.EspClientTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-16T13:23:07.384Z" hostname="LAPTOP-PC3T6C1J" time="0.012">
+  <properties/>
+  <testcase name="boundsResponsesAndClosesCancelledRequests" classname="com.fatiguesense.wifitest.EspClientTest" time="0.006"/>
+  <testcase name="validatesByteBoundariesWithoutTrimmingCredentials" classname="com.fatiguesense.wifitest.EspClientTest" time="0.001"/>
+  <testcase name="sendsFirmwareHeadersAndExactUtf8Payload" classname="com.fatiguesense.wifitest.EspClientTest" time="0.002"/>
+  <testcase name="neverRetriesAnAmbiguousSave" classname="com.fatiguesense.wifitest.EspClientTest" time="0.001"/>
+  <testcase name="rejectsUrlsPortsAndInvalidAddresses" classname="com.fatiguesense.wifitest.EspClientTest" time="0.001"/>
+  <testcase name="readsStatusWithoutPosting" classname="com.fatiguesense.wifitest.EspClientTest" time="0.0"/>
+  <testcase name="rejectsLoginFailuresRedirectsAndRestartConflicts" classname="com.fatiguesense.wifitest.EspClientTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

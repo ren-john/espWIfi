@@ -1,0 +1,53 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.fatiguesense.wifitest"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="36" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:3:5-67
+11-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:3:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:4:5-79
+12-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:4:22-76
+13
+14    <application
+14-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:5:5-18:19
+15        android:allowBackup="false"
+15-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:8:9-36
+16        android:debuggable="true"
+17        android:extractNativeLibs="false"
+18        android:label="ESP Wi-Fi Test"
+18-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:6:9-39
+19        android:supportsRtl="true"
+19-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:9:9-35
+20        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+20-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:7:9-72
+21        android:usesCleartextTraffic="true" >
+21-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:10:9-44
+22        <activity
+22-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:9-17:20
+23            android:name="com.fatiguesense.wifitest.MainActivity"
+23-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:19-47
+24            android:exported="true"
+24-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:48-71
+25            android:windowSoftInputMode="adjustResize" >
+25-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:12:13-55
+26            <intent-filter>
+26-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:13:13-16:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:14:17-69
+27-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:14:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:15:17-77
+29-->C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:15:27-74
+30            </intent-filter>
+31        </activity>
+32    </application>
+33
+34</manifest>

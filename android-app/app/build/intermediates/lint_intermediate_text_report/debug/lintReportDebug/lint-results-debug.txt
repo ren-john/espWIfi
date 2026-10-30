@@ -1,0 +1,55 @@
+C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:8: Warning: The attribute android:allowBackup is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute android:dataExtractionRules specifying an @xml resource which configures cloud backups and device transfers on Android 12 and higher. [DataExtractionRules]
+        android:allowBackup="false"
+                             ~~~~~
+
+   Explanation for issues of type "DataExtractionRules":
+   Before Android 12, the attributes android:allowBackup and
+   android:fullBackupContent were used to configure all forms of backup,
+   including cloud backups, device-to-device transfers and adb backup.
+
+   In Android 12 and higher, these attributes have been deprecated and will
+   only apply to cloud backups. You should instead use the attribute
+   android:dataExtractionRules, specifying an @xml resource that configures
+   which files to back up, for cloud backups and for device-to-device
+   transfers, separately. If your minSdkVersion supports older versions,
+   you'll still want to specify an android:fullBackupContent resource if the
+   default behavior is not right for your app.
+
+   https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   https://goo.gle/DataExtractionRules
+
+C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:5: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+C:\RJ\Coding\espWIFI\android-app\app\src\main\java\com\fatiguesense\wifitest\MainActivity.java:73: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        button("Use default ESP IP", () -> address.setText("192.168.4.1"), true);
+                                                           ~~~~~~~~~~~~~
+C:\RJ\Coding\espWIFI\android-app\app\src\main\java\com\fatiguesense\wifitest\MainActivity.java:135: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            catch (ActivityNotFoundException ignored) { result.setText("Open Wi-Fi / hotspot settings manually."); }
+                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\RJ\Coding\espWIFI\android-app\app\src\main\java\com\fatiguesense\wifitest\MainActivity.java:155: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        catch (Exception e) { result.setText("Could not prepare settings request."); }
+                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 5 warnings

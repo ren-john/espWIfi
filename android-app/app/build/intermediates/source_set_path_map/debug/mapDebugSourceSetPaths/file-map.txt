@@ -1,0 +1,8 @@
+com.fatiguesense.wifitest.app-pngs-0 C:\RJ\Coding\espWIFI\android-app\app\build\generated\res\pngs\debug
+com.fatiguesense.wifitest.app-resValues-1 C:\RJ\Coding\espWIFI\android-app\app\build\generated\res\resValues\debug
+com.fatiguesense.wifitest.app-updated_navigation_xml-2 C:\RJ\Coding\espWIFI\android-app\app\build\generated\updated_navigation_xml\debug
+com.fatiguesense.wifitest.app-packageDebugResources-3 C:\RJ\Coding\espWIFI\android-app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.fatiguesense.wifitest.app-packageDebugResources-4 C:\RJ\Coding\espWIFI\android-app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.fatiguesense.wifitest.app-debug-5 C:\RJ\Coding\espWIFI\android-app\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.fatiguesense.wifitest.app-debug-6 C:\RJ\Coding\espWIFI\android-app\app\src\debug\res
+com.fatiguesense.wifitest.app-main-7 C:\RJ\Coding\espWIFI\android-app\app\src\main\res

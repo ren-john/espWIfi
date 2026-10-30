@@ -1,0 +1,2 @@
+source C:/RJ/Coding/espWIFI/build/bootloader/gdbinit/symbols
+source C:/RJ/Coding/espWIFI/build/bootloader/gdbinit/connect

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.13.2" type="incidents">
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/fatiguesense/wifitest/MainActivity.java"
+            line="73"
+            column="60"
+            startOffset="3099"
+            endLine="73"
+            endColumn="73"
+            endOffset="3112"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/fatiguesense/wifitest/MainActivity.java"
+            line="135"
+            column="72"
+            startOffset="6562"
+            endLine="135"
+            endColumn="113"
+            endOffset="6603"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/fatiguesense/wifitest/MainActivity.java"
+            line="155"
+            column="46"
+            startOffset="7552"
+            endLine="155"
+            endColumn="83"
+            endOffset="7589"/>
+    </incident>
+
+</incidents>

@@ -1,0 +1,63 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:2:1-19:12
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:2:1-19:12
+	package
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:3:5-67
+	android:name
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:3:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:4:5-79
+	android:name
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:4:22-76
+application
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:5:5-18:19
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:5:5-18:19
+	android:extractNativeLibs
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	android:supportsRtl
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:9:9-35
+	android:label
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:6:9-39
+	android:allowBackup
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:8:9-36
+	android:theme
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:7:9-72
+	android:usesCleartextTraffic
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:10:9-44
+activity#com.fatiguesense.wifitest.MainActivity
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:9-17:20
+	android:windowSoftInputMode
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:12:13-55
+	android:exported
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:48-71
+	android:name
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:11:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:13:13-16:29
+action#android.intent.action.MAIN
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml:15:27-74
+uses-sdk
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\RJ\Coding\espWIFI\android-app\app\src\main\AndroidManifest.xml
