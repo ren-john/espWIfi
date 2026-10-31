@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FatigueSense Wi-Fi</title>
+<style>
+body{font:16px system-ui,sans-serif;max-width:620px;margin:32px auto;padding:0 18px;color:#18312f;background:#f4f7f6}
+section{padding:20px;margin:18px 0;border:1px solid #c8d5d1;border-radius:12px;background:white}
+h1{font-size:26px}h2{font-size:20px;margin-top:0}label{display:block;margin:14px 0 5px}
+input{box-sizing:border-box;width:100%;padding:12px;border:1px solid #839b94;border-radius:6px;font:inherit}
+button{padding:12px 16px;margin:12px 8px 0 0;border:0;border-radius:6px;background:#176352;color:white;font:inherit;cursor:pointer}
+button.secondary{background:#e0eae6;color:#18312f}button:disabled{opacity:.5;cursor:wait}
+a{color:#176352}#status,#message{white-space:pre-line;overflow-wrap:anywhere}small{display:block;margin-top:10px;color:#4d625b}
+</style>
+<body>
+<a href="/">&larr; Camera and controls</a>
+<h1>Wi-Fi connection</h1>
+<p>Choose whether the ESP creates a hotspot or joins your phone hotspot / router.</p>
+<section aria-live="polite"><h2>Current connection</h2><p id="status">Loading...</p><p id="links"></p></section>
+<section>
+<h2>Connect to Wi-Fi</h2>
+<p>Use a 2.4 GHz network. For a phone hotspot, copy its name and password from your phone's hotspot settings.</p>
+<form id="connect-form">
+<label for="ssid">Wi-Fi name (SSID)</label><input id="ssid" name="ssid" required maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false">
+<label for="password">Wi-Fi password</label><input id="password" name="password" type="password" maxlength="64" autocomplete="new-password">
+<small>Leave the password empty only for an open network. A saved password is never shown here.</small>
+<button type="submit">Save and connect</button>
+<button type="button" class="secondary" id="saved" disabled>Use saved Wi-Fi</button>
+</form>
+<p>The ESP restarts after saving. If this phone will provide the hotspot, enable it after saving. Some phones turn off Wi-Fi when their hotspot starts.</p>
+<p>If connection fails, the ESP hotspot returns within about 30 seconds. It continues trying to connect.</p>
+</section>
+<section><h2>Use the ESP hotspot</h2>
+<p>Connect your phone to <strong>FatigueSense_Cam</strong> with password <strong>safedriving</strong>, then open <a href="http://192.168.4.1/">192.168.4.1</a>.</p>
+<button type="button" id="ap">Switch to hotspot</button>
+<button type="button" class="secondary" id="forget">Forget Wi-Fi and use hotspot</button>
+</section>
+<p id="message" role="status" aria-live="polite"></p>
+<script>
+const statusEl = document.getElementById('status');
+const messageEl = document.getElementById('message');
+const ssidEl = document.getElementById('ssid');
+const passwordEl = document.getElementById('password');
+const savedButton = document.getElementById('saved');
+let editing = false, busy = false, savedAvailable = false;
+ssidEl.addEventListener('input', () => { editing = true; });
+function setBusy(value) {
+  busy = value;
+  document.querySelectorAll('button').forEach(b => { b.disabled = value; });
+  savedButton.disabled = value || !savedAvailable;
+}
+async function refresh() {
+  if (busy) return;
+  try {
+    const response = await fetch('/api/wifi', {cache:'no-store', signal:AbortSignal.timeout(5000)});
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const s = await response.json();
+    if (busy) return;
+    savedAvailable = Boolean(s.ssid);
+    savedButton.disabled = !savedAvailable;
+    if (!editing) ssidEl.value = s.ssid || '';
+    statusEl.textContent = 'Selected mode: ' + (s.mode === 'sta' ? 'Wi-Fi client' : 'ESP hotspot') +
+      '\nWi-Fi: ' + (s.connected ? 'Connected to ' + s.ssid + ' at ' + s.ip : 'Not connected') +
+      '\nESP hotspot: ' + (s.hotspot_active ? 'Available at 192.168.4.1' : 'Off') +
+      '\nCamera: ' + (s.camera_ready ? 'Ready' : 'Unavailable') +
+      (s.disconnect_reason ? '\nLast Wi-Fi disconnect reason: ' + s.disconnect_reason : '');
+    const links = document.getElementById('links');
+    links.replaceChildren();
+    if (s.connected && s.ip) {
+      const a = document.createElement('a');
+      a.href = 'http://' + s.ip + '/';
+      a.textContent = 'Open camera at ' + s.ip;
+      links.append(a);
+    }
+  } catch (e) {
+    if (!busy) statusEl.textContent = 'ESP unavailable. Reconnect to its Wi-Fi or open its new IP address.';
+  }
+}
+async function save(config) {
+  if (busy) return;
+  setBusy(true);
+  messageEl.textContent = 'Saving connection settings...';
+  try {
+    const response = await fetch('/api/wifi', {
+      method:'POST', headers:{'Content-Type':'application/json','X-Requested-With':'FatigueSense'},
+      body:JSON.stringify(config), signal:AbortSignal.timeout(8000)
+    });
+    if (!response.ok) throw new Error(await response.text());
+    passwordEl.value = '';
+    messageEl.textContent = config.mode === 'ap'
+      ? 'Saved. ESP restarting. Connect to FatigueSense_Cam and open http://192.168.4.1/.'
+      : 'Saved. ESP restarting. Enable the target hotspot now. Open the ESP IP shown in the hotspot/router connected-device list or USB serial log, using http://<ESP-IP>/. The stream is http://<ESP-IP>:81/stream. If connection fails, reconnect to FatigueSense_Cam after 30 seconds.';
+    statusEl.textContent = 'Restarting; this page will stop updating.';
+  } catch (e) {
+    messageEl.textContent = 'Could not confirm the save: ' + e.message + '\nIf the ESP disconnected, check the target network or recovery hotspot before retrying.';
+    setBusy(false);
+  }
+}
+document.getElementById('connect-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const ssid = ssidEl.value, password = passwordEl.value;
+  const bytes = value => new TextEncoder().encode(value).length;
+  if (!bytes(ssid) || bytes(ssid) > 32 ||
+      !(bytes(password) === 0 || (bytes(password) >= 8 && bytes(password) <= 63) || /^[0-9a-fA-F]{64}$/.test(password))) {
+    messageEl.textContent = 'SSID must be 1-32 bytes. Password must be empty for an open network, 8-63 bytes, or 64 hexadecimal digits.';
+    return;
+  }
+  save({mode:'sta', ssid, password});
+});
+savedButton.onclick = () => save({mode:'sta'});
+document.getElementById('ap').onclick = () => save({mode:'ap'});
+document.getElementById('forget').onclick = () => {
+  if (confirm('Forget saved Wi-Fi credentials and restart as an ESP hotspot?')) save({mode:'ap', forget:true});
+};
+refresh();
+setInterval(refresh, 4000);
+</script>
+</body></html>

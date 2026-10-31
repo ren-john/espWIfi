@@ -1,0 +1,18 @@
+# ESP-IDF generated output
+/build/
+/managed_components/
+
+# Keep the selected board configuration locally unless intentionally committed.
+# sdkconfig
+
+# IDE and local machine files
+/.vscode/
+/.idea/
+*.swp
+*.swo
+
+# Android Gradle generated output
+/android-app/.gradle/
+/android-app/**/build/
+/android-app/local.properties
+
